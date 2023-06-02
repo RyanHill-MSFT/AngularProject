@@ -1,19 +1,38 @@
 {
-  "version": "0.2.0",
-  "configurations": [
-    {
-      "type": "edge",
-      "request": "launch",
-      "name": "localhost (Edge)",
-      "url": "http://localhost:4200",
-      "webRoot": "${workspaceFolder}"
-    },
-    {
-      "type": "chrome",
-      "request": "launch",
-      "name": "localhost (Chrome)",
-      "url": "http://localhost:4200",
-      "webRoot": "${workspaceFolder}"
-    }
-  ]
+    "configurations": [
+        {
+            // Use this to debug the Angular project in Visaul Studio project
+            "type": "edge",
+            "request": "launch",
+            "name": "localhost (Edge)",
+            "url": "http://localhost:4200",
+            "webRoot": "${workspaceFolder}"
+        },
+        {
+            "name": "Attach to Node Functions",
+            "type": "node",
+            "request": "attach",
+            "port": 9229,
+            "preLaunchTask": "func: host start"
+        },
+        {
+            "name": "SWA: Run AngularProject",
+            "request": "launch",
+            "type": "msedge",
+            "url": "http://localhost:4280",
+            "preLaunchTask": "swa: start AngularProject",
+            "webRoot": "${workspaceFolder}/",
+            "timeout": 30000
+        }
+    ],
+    "compounds": [
+        {
+            "name": "Ruan AngularProject and Attach to Node Functions",
+            "configurations": [
+                "Attach to Node Functions",
+                "SWA: Run AngularProject"
+            ]
+        }
+    ],
+    "version": "0.2.0"
 }
